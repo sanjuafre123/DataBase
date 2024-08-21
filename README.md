@@ -2,7 +2,7 @@
 
 This repository contains SQL scripts for managing an `employees` table. The table includes columns for name, role, salary, age, and phone number. Below are the details of the table structure and various SQL operations performed.
 
-## To create table
+- ## To create table
 ```bash
 CREATE TABLE "employees" (
 
@@ -17,7 +17,7 @@ CREATE TABLE "employees" (
 )
 ```
 
-## Data Insertion
+- ## Data Insertion
 
 Inserting data into the `employees` table:
 
@@ -31,7 +31,7 @@ INSERT INTO employees (Name,Role,Salary,Age,Phone) VALUES ("David","HR Specialis
 
 ```
 
- ### Selecting all data from the `employees` table:
+### Selecting all data from the `employees` table:
 
 ```bash
 SELECT * FROM employees;
@@ -52,7 +52,7 @@ SELECT * FROM employees WHERE Name Like 'J%';
 SELECT * FROM employees WHERE (Age > 25 AND Salary > 95000);
 
 ```
-## Data Update
+- ## Data Update
 
 ### Updating data in the `employees` table:
 
@@ -63,7 +63,7 @@ UPDATE employees SET Phone = 9726548975 WHERE Id = 1;
 
 ```
 
-## Data Delete
+- ## Data Delete
 
 ### Deleting data from the `employees` table:
 
@@ -74,7 +74,7 @@ DELETE FROM employees WHERE Age > 30;
 
 ```
 
-## Table :
+- ## Table :
 
 ![image](https://github.com/user-attachments/assets/d6639f53-fcae-4a3c-a7f7-5a2daf9a7ef8)
 
