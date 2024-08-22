@@ -78,7 +78,97 @@ DELETE FROM employees WHERE Age > 30;
 
 ![image](https://github.com/user-attachments/assets/d6639f53-fcae-4a3c-a7f7-5a2daf9a7ef8)
 
+## Table in App Inspection
 
+## Database Helper class
+```bash
+
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+
+class DatabaseHelper {
+  static DatabaseHelper databaseHelper = DatabaseHelper._();
+
+  DatabaseHelper._();
+
+  static const String databaseName = 'notes.db';
+  static const String tableName = 'notes';
+
+  Database? _database;
+
+  Future<Database?> get database async => _database ?? await initDatabase();
+
+  Future<Database?> initDatabase() async {
+    final path = await getDatabasesPath();
+    final dbPath = join(path, databaseName);
+    return await openDatabase(
+      dbPath,
+      version: 1,
+      onCreate: (db, version) {
+        String sql = '''
+      CREATE TABLE $tableName (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      amount INTEGER NOT NULL,
+      description TEXT NOT NULL,
+      category TEXT
+      )
+      ''';
+        db.execute(sql);
+      },
+    );
+  }
+
+  Future<int> insertData() async {
+    final db = await database;
+    String sql = '''
+    INSERT INTO $tableName (amount, description)
+    VALUES (750, 'Travel reimbursement');
+    ''';
+    final result = await db!.rawInsert(sql);
+    return result;
+  }
+
+  Future<int> deleteData(int id) async {
+    final db = await database;
+    String sql = '''
+    DELETE FROM $tableName WHERE id = $id
+    ''';
+    final result = await db!.rawDelete(sql);
+    return result;
+  }
+}
+
+```
+
+## Controller
+```bash
+
+import 'package:get/get.dart';
+
+import '../Helper/helper.dart';
+
+class BudgetController extends GetxController{
+
+  @override
+  void onInit(){
+    super.onInit();
+    initDb();
+  }
+
+  Future initDb() async{
+    await DatabaseHelper .databaseHelper.database;
+  }
+
+  Future insertRecord() async{
+    await DatabaseHelper.databaseHelper.insertData();
+  }
+  Future deleteRecord(int id) async{
+    await DatabaseHelper.databaseHelper.deleteData(id);
+  }
+}
+
+```
+<img src="https://github.com/user-attachments/assets/7e8f70e7-076d-4b02-a057-16eabd0ebf46">
 
 
 
