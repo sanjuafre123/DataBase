@@ -78,7 +78,7 @@ DELETE FROM employees WHERE Age > 30;
 
 ![image](https://github.com/user-attachments/assets/d6639f53-fcae-4a3c-a7f7-5a2daf9a7ef8)
 
-## Table in App Inspection
+# Table in App Inspection
 
 ## Database Helper class
 ```bash
