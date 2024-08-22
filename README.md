@@ -168,6 +168,9 @@ class BudgetController extends GetxController{
 }
 
 ```
+
+## Database inspector
+
 <img src="https://github.com/user-attachments/assets/7e8f70e7-076d-4b02-a057-16eabd0ebf46">
 
 
